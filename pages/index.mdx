@@ -1,0 +1,105 @@
+<SlidePage>
+    
+<Cover>
+
+<img src="https://vuejs.org/images/logo.png" width="250px" />
+
+# VueJS
+
+/vjuː/ (view)
+
+</Cover>
+<SpeakerNotes>
+Test
+</SpeakerNotes>
+
+---
+
+1. Les composants
+1. le SFC (Single File Component)
+1. Créer sa première application
+1. L'API Composition
+1. Un petit exo
+
+---
+
+1. **Les composants**
+1. le SFC (Single File Component)
+1. Créer sa première application
+1. L'API Composition
+1. Un petit exo
+
+---
+
+<img
+  src="https://vuejs.org/assets/components.7fbb3771.png"
+  style={{ maxWidth: "70vw", maxHeight: "60vh" }}
+/>
+
+**Morceau réutilisables**  
+Organisation similaire au DOM  
+**Isolation des morceaux**
+
+---
+
+1. Les composants
+1. **le SFC (Single File Component)**
+1. Créer sa première application
+1. L'API Composition
+1. Un petit exo
+
+---
+
+```html
+// ButtonCounter.vue
+<script setup>
+  import { ref } from "vue";
+  const count = ref(0);
+</script>
+
+<template>
+  <button @click="count++">You clicked me {{ count }} times.</button>
+</template>
+```
+
+**Composant minimal**  
+Script/Template[/Style]  
+**Isolation des fonctions**  
+Multi-langage
+
+---
+
+```html
+// Layout.vue
+<script setup>
+  import ButtonCounter from "./ButtonCounter.vue";
+</script>
+
+<template>
+  <h1>I am groot!</h1>
+  <ButtonCounter />
+</template>
+```
+
+**Utilisation d'un autre composant**
+
+`<script setup>`  
+Les composants importés sont automatiquement enregostrés pour leur utilisation
+
+---
+
+```html
+/* ... */
+<template>
+  <h1>I am groot!</h1>
+  <ButtonCounter />
+  <ButtonCounter />
+  <ButtonCounter />
+  <ButtonCounter />
+  <ButtonCounter />
+</template>
+```
+
+**Utilisation Multiple**
+
+</SlidePage>

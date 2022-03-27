@@ -374,6 +374,9 @@ export default function SlidePage({ children, next }) {
           {renderSlide()}
         </div>
       </PresentationMode>
+      <div style={{ position: "fixed", right: "50px", bottom: "30px" }}>
+        {currentSlide} / beaucoup
+      </div>
     </Swipeable>
   );
 }

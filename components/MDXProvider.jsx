@@ -7,6 +7,7 @@ import Cover from "./Cover";
 import SpeakerNotes from "./SpeakerNotes";
 import Step from "./Step";
 import Steps from "./Steps";
+import TableOfContents from "./TableOfContents";
 import { motion } from "framer-motion";
 
 const mdComponents = {
@@ -21,7 +22,9 @@ const mdComponents = {
         language={language}
         style={okaidia}
         {...props}
-      />
+      >
+        {props.children.split("\n").slice(0, -1).join("\n")}
+      </SyntaxHighlighter>
     );
   },
   Cover,
@@ -29,6 +32,7 @@ const mdComponents = {
   SpeakerNotes,
   Step,
   Steps,
+  TableOfContents,
   motion,
 };
 

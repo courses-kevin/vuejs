@@ -22,21 +22,15 @@ _I am groot_
 
 ---
 
-1. Les composants
-1. le SFC (Single File Component)
-1. Créer sa première application
-1. L'API Composition
-1. Un petit exo
+<TableOfContents />
 
 ---
 
-1. **Les composants**
-1. le SFC (Single File Component)
-1. Créer sa première application
-1. L'API Composition
-1. Un petit exo
+<TableOfContents i={0} />
 
 ---
+
+## Composants
 
 <img
   src="https://vuejs.org/assets/components.7fbb3771.png"
@@ -49,11 +43,21 @@ Organisation similaire au DOM
 
 ---
 
-1. Les composants
-1. **le SFC (Single File Component)**
-1. Créer sa première application
-1. L'API Composition
-1. Un petit exo
+### Arbre des composants
+
+<img src="https://www.researchgate.net/profile/Dario-Antonelli-3/publication/302396646/figure/fig1/AS:362682818547712@1463481730438/Example-of-the-component-tree-of-an-electric-mixer.png" />
+
+**Glass** est l'enfant de **Cup**
+
+**Cup** est le parent de **Glass**
+
+**Cup** est frère de **Blades**
+
+---
+
+## Exemple
+
+[CSSDesignAwards](https://www.cssdesignawards.com/)
 
 ---
 
@@ -108,5 +112,209 @@ Les composants importés sont automatiquement enregostrés pour leur utilisation
 ```
 
 **Utilisation Multiple**
+
+---
+
+<TableOfContents i={1} />
+
+---
+
+## Playground
+
+<img src="/vuePlayground.svg" style={{ maxWidth: "50vw", maxHeight: "50vh" }} />
+
+[Site afin de tester en live](https://sfc.vuejs.org/)
+
+---
+
+<TableOfContents i={2} />
+
+---
+
+# Embed ?
+
+Embed => Utilisation dans une page en html classique
+
+Non Embed => Utilisation dans des fichiers spécifiques à VueJS
+
+---
+
+<TableOfContents i={3} />
+
+---
+
+# SFC
+
+(Single File Component)
+
+---
+
+# Template
+
+---
+
+### Interpolation de texte
+
+```html
+<span>Message: {{ msg }}</span>
+```
+
+avec du JS:
+
+```a
+{{ number + 1 }}
+
+{{ ok ? 'YES' : 'NO' }}
+
+{{ message.split('').reverse().join('')}}
+```
+
+\+
+
+```html
+<div :id="`list-${id}`"></div>
+```
+
+---
+
+## Props
+
+<img src="https://vuejs.org/assets/directive.69c37117.png" />
+
+---
+
+### Binding Descendant (Argument)
+
+Pour descendre une donnée dans l'arbre des composants
+
+```html
+<div v-bind:id="dynamicId"></div>
+```
+
+Sucre:
+
+```html
+<div :id="dynamicId"></div>
+```
+
+---
+
+### Binding Montant (Events)
+
+Pour remonter une donnée dans l'arbre des composants
+
+```html
+<a v-on:click="doSomething"> ... </a>
+```
+
+Sucre:
+
+```html
+<a @click="doSomething"> ... </a>
+```
+
+---
+
+### Modifier (Exemple event)
+
+`event.preventDefault()`
+
+```html
+<form @submit.prevent="onSubmit">...</form>
+```
+
+---
+
+# Script
+
+---
+
+## réactivité
+
+<img src="https://user.oc-static.com/upload/2020/04/23/15876408326061_ezgif.com-video-to-gif%20%289%29.gif" />
+
+(Update du template quand une variable quand sa valeur change)
+
+---
+
+#### Types complexes (array, object, collection, ...)
+
+```js
+import { reactive } from "vue";
+
+export default {
+  // setup défini par VueJS donc non renommable
+  setup() {
+    const state = reactive({ count: 0 });
+
+    function increment() {
+      state.count++;
+    }
+
+    return {
+      state,
+      increment,
+    };
+  },
+};
+```
+
+\+
+
+```html
+<button @click="increment">{{ state.count }}</button>
+```
+
+---
+
+#### Sucre du `setup`
+
+```html
+// Indication du setup dans la balise script
+<script setup>
+  import { reactive } from "vue";
+
+  const state = reactive({ count: 0 });
+
+  function increment() {
+    state.count++;
+  }
+</script>
+
+<template>
+  <button @click="increment">{{ state.count }}</button>
+</template>
+```
+
+---
+
+#### Types primitifs (string, boolean, number, ...)
+
+```html
+<script setup>
+  import { ref } from "vue";
+
+  const count = ref(0);
+
+  function increment() {
+    count.value++;
+  }
+</script>
+
+<template>
+  <button @click="increment">
+    {{ count }}
+    <!-- no .value needed -->
+  </button>
+</template>
+```
+
+---
+
+The end boys
+
+---
+
+## La réactivité
 
 </SlidePage>

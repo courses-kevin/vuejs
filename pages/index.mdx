@@ -22,6 +22,66 @@ _I am groot_
 
 ---
 
+## Qui est là ?
+
+<img
+  src="https://c.tenor.com/9LtOzZ7dJDIAAAAC/alone-class.gif"
+  style={{ maxWidth: "70vw", maxHeight: "60vh", transform: "scale(1.2)" }}
+/>
+
+---
+
+## Une librairie ?
+
+Bibliothèque de fonctions JS
+
+Parfois en très grand nombre
+
+---
+
+## Un framework ?
+
+Bibliothèque de fonctions JS
+
+En général un seul par application
+
+**c'est le cas de VueJS**
+
+---
+
+## La différence ducoup ?
+
+`A library performs specific, well-defined operations. A framework is a skeleton where the application defines the "meat" of the operation by filling out the skeleton`
+
+---
+
+## Et le point commun ?
+
+Les deux sont des packages, librairies et frameworks
+
+Les packages sont les dépendances (code parlant) d'une application
+
+---
+
+## Et l'utilité ?
+
+<img
+  src="https://c.tenor.com/tNzD81annTAAAAAC/hoola-hoop-tire.gif"
+  style={{ maxWidth: "70vw", maxHeight: "60vh", transform: "scale(1.2)" }}
+/>
+
+---
+
+## Framework JS
+
+### pour la création d'interfaces
+
+## Basé sur les composants
+
+### avec un fonctionnement déclaratif
+
+---
+
 <TableOfContents />
 
 ---
@@ -55,9 +115,14 @@ Organisation similaire au DOM
 
 ---
 
-## Exemple
+## Etude
 
-[CSSDesignAwards](https://www.cssdesignawards.com/)
+<img
+  src="https://asset.brandfetch.io/idAuTwQIFL/iduloMMvGF.png"
+  style={{ maxWidth: "50vw", maxHeight: "20vh" }}
+/>
+
+[Lien](https://www.cssdesignawards.com/)
 
 ---
 
@@ -95,7 +160,7 @@ Multi-langage
 **Utilisation d'un autre composant**
 
 `<script setup>`  
-Les composants importés sont automatiquement enregostrés pour leur utilisation
+Les composants importés sont automatiquement enregistrés pour leur utilisation
 
 ---
 
@@ -146,6 +211,14 @@ Non Embed => Utilisation dans des fichiers spécifiques à VueJS
 # SFC
 
 (Single File Component)
+
+---
+
+> **3 PARTIES**
+
+- Template
+- Script
+- Style
 
 ---
 
@@ -229,11 +302,11 @@ Sucre:
 
 ---
 
-## réactivité
+## concept de réactivité
 
 <img src="https://user.oc-static.com/upload/2020/04/23/15876408326061_ezgif.com-video-to-gif%20%289%29.gif" />
 
-(Update du template quand une variable quand sa valeur change)
+(Update du template quand une variable change de valeur)
 
 ---
 
@@ -311,10 +384,126 @@ export default {
 
 ---
 
-The end boys
+# Style
 
 ---
 
-## La réactivité
+```html
+<style scoped>
+  .className {
+    color: #bada55;
+  }
+</style>
+```
+
+---
+
+> **Quelques avantages au SFC**
+
+- Compatible avec plusieurs langages
+  - Jade
+  - Typescript
+  - Sass/Less...
+
+---
+
+<TableOfContents i={4} />
+
+---
+
+# Vue-cli
+
+[Documentation](https://cli.vuejs.org/guide/)
+
+---
+
+## Installation
+
+[NPM](/npm?mode=slideshow#0)
+
+```bash
+npm install -g @vue/cli
+```
+
+---
+
+```bash
+vue create nom-app
+```
+
+---
+
+```bash
+Vue CLI v5.0.4
+? Please pick a preset:
+❯ Default ([Vue 3] babel, eslint)
+  Default ([Vue 2] babel, eslint)
+  Manually select features
+
+```
+
+\+
+
+```bash
+Vue CLI v5.0.4
+? Please pick a preset: Default ([Vue 3] babel, eslint)
+? Pick the package manager to use when installing dependencies:
+  Use Yarn
+❯ Use NPM
+```
+
+---
+
+## Testons
+
+```bash
+cd nom-app
+npm run serve
+```
+
+Mais qué passa ?
+
+---
+
+une application vue est disponible sur le port indiqué
+
+```bash
+ DONE  Compiled successfully in 1911ms
+
+
+  App running at:
+  - Local:   http://localhost:8081/
+  - Network: http://192.168.1.82:8081/
+
+  Note that the development build is not optimized.
+  To create a production build, run yarn build.
+
+```
+
+---
+
+<TableOfContents i={5} />
+
+---
+
+# Exo
+
+(Et travail de mémoire)
+
+---
+
+## Même app sans requête HTTP mais en vue
+
+- Une division en composants
+  - Un composant pour la partie formulaire
+  - Un composant de représentation d'un item
+  - Un composant parent qui gèrera la donnée
+  - Un composant qui affiche une image de 9gag (optionnel)
+- Ajout d'un item
+- Suppression d'un item
+
+---
+
+## The end
 
 </SlidePage>

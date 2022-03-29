@@ -6,8 +6,7 @@ const TOCElements = [
   "Embed et non embed",
   "Le SFC et sa syntaxe",
   "Créer sa première application",
-  "VueJS comment ça marche ?",
-  "Petit exo",
+  "Et hop c'est reparti",
 ];
 
 export const TOC = ({ i }) => {

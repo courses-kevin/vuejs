@@ -1,0 +1,368 @@
+<SlidePage metas={{name: '@RIOU Kevin', title:'VueJS - MDS - 2', url: 'https://kevin.riou.pro', date: '13/04/2022'}}>
+
+<Cover>
+
+<img src="https://vuejs.org/images/logo.png" width="250px" />
+
+# VueJS - 2
+
+/vjuː/ (view)
+
+</Cover>
+<SpeakerNotes>
+**Emargement**
+</SpeakerNotes>
+
+---
+
+# Vue 2 ou 3 ?
+
+---
+
+### Est-ce (FC) clair
+
+- la syntaxe d'un composant
+- utilisation d'un composant dans un autre ?
+- le v-for ?
+
+---
+
+<TableOfContents set={1} />
+
+---
+
+<TableOfContents set={1} i={0} />
+
+---
+
+## Props
+
+```html
+<!-- Parent -->
+<template>
+  <Composant :nomprops="variablejs" />
+</template>
+```
+
+\+
+
+```html
+<!-- Enfant -->
+<script setup>
+  import { defineProps } from "vue";
+
+  const props = defineProps(["nomprops"]);
+
+  console.log(props.nomprops);
+</script>
+```
+
+---
+
+## Exo 1:
+
+- Un composant (A) qui contient une variable avec un message
+- Un composant (B) enfant qui affiche via une props le message
+
+---
+
+## Event
+
+```html
+<!-- Parent -->
+<template>
+  <Composant @event="fonctionJs" />
+</template>
+```
+
+\+
+
+```html
+<!-- Enfant -->
+<script setup>
+  import { defineEmits } from "vue";
+
+  const emit = defineEmits(["event"]);
+
+  const handleClickButton = () => {
+    emit("event", "I am groot");
+  };
+</script>
+```
+
+---
+
+## Exo 2:
+
+- Ajouter un composant (C) enfant avec un bouton
+- Une mise à jour de la variable du composant (A) lors de l'appui du bouton dans le composant (C)
+
+- **Par exemple lors de l'appui du bouton le message change pour "I am groot"**
+
+- **Le message affiché dans le composant (B) est normalement mis à jour lors de l'appui sur le bouton**
+
+---
+
+## v-model
+
+```html
+<!-- Parent -->
+<script setup>
+  import (ref) from 'vue';
+
+  const value = ref("Valeur par défaut")
+</script>
+
+<template>
+  <Composant v-model="variableJS" />
+</template>
+```
+
+---
+
+## Exo 3:
+
+- Transformer le bouton du composant (C) en champs de texte
+
+- **Le message affiché dans le composant (B) est normalement mis à jour lors du changement de valeur du champs de texte**
+
+---
+
+<TableOfContents set={1} i={1} />
+
+---
+
+# v-if
+
+Rend un bloc uniquement si la valeur passée est vraie
+
+```html
+<h1 v-if="awesome">I'm your father Michel</h1>
+```
+
+---
+
+# v-else
+
+Rend un bloc uniquement si la valeur passée au v-if précédent est fausse
+
+```html
+<button @click="awesome = !awesome">Toggle</button>
+
+<h1 v-if="awesome">I'm your father Michel</h1>
+<h1 v-else>I'm NOT your father Michel</h1>
+```
+
+---
+
+# v-show
+
+Rend un bloc uniquement si la valeur passée est vraie (affichage ou non avec du CSS)
+
+```html
+<h1 v-show="awesome">I'm your CSS</h1>
+```
+
+---
+
+## Exo 4:
+
+- Permettre le masquage ou non du champs de saisie du composant (C) avec un autre bouton dans le composant (A)
+
+---
+
+<TableOfContents set={1} i={2} />
+
+---
+
+## Computed
+
+Une fonction dont le résultat est calculé selon les variables utilisées
+
+Admettons `x` et `y` ainsi que `z` une fonction computed qui renvoie `x + y``
+
+lorsque la valeur de `x` ou de `y` change, `z` sera automatiquement recalculé
+
+---
+
+## Computed
+
+```html
+<script setup>
+  import { ref, computed } from "vue";
+
+  const name = ref("Star");
+  const surname = ref("Lord");
+
+  const fullname = computed(() => `${name.value} ${surname.value}`);
+</script>
+
+<template>
+  <input v-model="name" />
+  <input v-model="surname" />
+  <span>{{ fullname }}</span>
+</template>
+```
+
+---
+
+## Exo 5:
+
+- Désormais le composant (C) doit afficher le contenu de son champs en reverse dans un composant (D) enfant
+
+- ex "Groot" saisi dans le champs dois afficher en dessous "toorG"
+
+---
+
+<TableOfContents set={1} i={3} />
+
+---
+
+## Watcher
+
+Une fonction qui est déclenchée lors du changement des variables qu'elle utilise
+
+En gros comme le computed sauf qu'il ny a pas de résultat à retourner
+
+---
+
+## Watcher
+
+```html
+<script setup>
+  import { ref, watch } from "vue";
+
+  const name = ref("Drax");
+
+  watch(name, (newValue, oldValue) => {
+    console.log(
+      `The value of name as changed from "${oldValue}" to "${newValue}"`
+    );
+  });
+</script>
+
+<template>
+  <input v-model="name" />
+</template>
+```
+
+---
+
+## Watcher
+
+```html
+<script setup>
+  import { ref, watch } from "vue";
+
+  const name = ref("Raccoon");
+  const surname = ref("le raton laveur");
+
+  watch([name, surname], ([newName, newSurname], [oldName, oldSurname]) => {
+    // log something
+  });
+</script>
+
+<template>
+  <input v-model="name" />
+  <input v-model="surname" />
+</template>
+```
+
+---
+
+## Watcher
+
+Que comprenez vous du watchEffect (voir doc de vue)
+
+# [ici](https://vuejs.org/guide/essentials/watchers.html#this-watch)
+
+---
+
+Exo 6:
+
+- Lors de l'affichage ou non du champs du composant (C), il dois y avoir un console.log avec une chaine de caractère de votre choix
+
+---
+
+<TableOfContents set={1} i={4} />
+
+---
+
+<img
+  src="https://vuejs.org/assets/lifecycle.16e4c08e.png"
+  style={{ maxWidth: "70vw", maxHeight: "80vh", transform: "scale(1.2)" }}
+/>
+
+---
+
+<img
+  src="/hooks.png"
+  style={{ maxWidth: "70vw", maxHeight: "80vh", transform: "scale(1.2)" }}
+/>
+
+---
+
+```html
+<script setup>
+  import { ref, onMounted } from "vue";
+
+  // Nous verrrons ref au prochain paragraphe
+  const el = ref();
+
+  onMounted(() => {
+    el.focus();
+  });
+</script>
+```
+
+[documentation API](https://vuejs.org/api/composition-api-lifecycle.html#onmounted)
+
+<SpeakerNotes>Exemple avec `onMounted`</SpeakerNotes>
+
+---
+
+## Exo je sais plus combien:
+
+- Dans un composant (E) ajouté au composant (A) j'affiche une image
+- Dans le composant (A) je peux choisir d'afficher ou non l'image du composant (E)
+- Lors de l'affichage du composant (E) je fais apparaitre une alerte `window.alert("ok")`
+- Lors du masquage de l'image, une alerte est affiché
+
+---
+
+<TableOfContents set={1} i={5} />
+
+---
+
+TODO Cours + exo focus sur champs
+
+---
+
+<TableOfContents set={1} i={6} />
+
+---
+
+TODO cours + exo layout de placement fournissans une base de composant
+
+---
+
+<TableOfContents set={1} i={7} />
+
+---
+
+# Projet
+
+---
+
+- Récupérer vos notes d'une API
+- Une authentification (champs login et mot de passe)
+- Un composant qui affiche la liste de vos points
+- Un composant qui affiche votre note (addition de tous vos points)
+- Un composant qui affiche la moyenne de la classe
+- Un bouton de déconnexion
+
+---
+
+## The end
+
+</SlidePage>

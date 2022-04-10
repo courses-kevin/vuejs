@@ -33,12 +33,6 @@ export default function App({ Component, pageProps }) {
                       rel="stylesheet"
                     />
                   </Head>
-                  <Header
-                    name={siteConfig.name}
-                    title={siteConfig.title}
-                    date={siteConfig.date}
-                    url={siteConfig.author.url}
-                  />
                   <Component {...pageProps} />
                 </TransitionPage>
               </AnimatePresence>

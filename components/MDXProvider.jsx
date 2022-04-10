@@ -8,6 +8,7 @@ import SpeakerNotes from "./SpeakerNotes";
 import Step from "./Step";
 import Steps from "./Steps";
 import TableOfContents from "./TableOfContents";
+import Header from "./Header";
 import { motion } from "framer-motion";
 
 const mdComponents = {
@@ -34,6 +35,7 @@ const mdComponents = {
   Steps,
   TableOfContents,
   motion,
+  Header,
 };
 
 export default ({ children }) => (

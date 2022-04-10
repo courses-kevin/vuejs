@@ -1,6 +1,6 @@
 import React from "react";
 
-const TOCElements = [
+const TOCElements1 = [
   "Les composants",
   "Playground",
   "Embed et non embed",
@@ -9,8 +9,22 @@ const TOCElements = [
   "Et hop c'est reparti",
 ];
 
-export const TOC = ({ i }) => {
-  const elements = TOCElements.map((t, j) =>
+const TOCElements2 = [
+  "Révisions",
+  "Rendu conditionnel",
+  "Réactivité calculée",
+  "Watchers",
+  "Lifecycle",
+  "Références",
+  "Slots",
+  "Requêtes API",
+  "Projet",
+];
+
+const sets = [TOCElements1, TOCElements2];
+
+export const TOC = ({ i, set }) => {
+  const elements = sets[set].map((t, j) =>
     j === i ? (
       <li>
         <strong>{t}</strong>

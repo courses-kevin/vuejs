@@ -10,6 +10,7 @@ import { useMode } from "../context/ModeContext";
 import { useCurrentSlide } from "../context/CurrentSlideContext";
 import { Storage } from "../hooks/useStorage";
 import { MODES } from "../constants/modes";
+import Header from "../components/Header";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -197,7 +198,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-export default function SlidePage({ children, next }) {
+export default function SlidePage({ children, next, metas }) {
   const {
     currentSlide,
     setSlide,
@@ -363,6 +364,7 @@ export default function SlidePage({ children, next }) {
 
   return (
     <Swipeable onSwipedLeft={swipeLeft} onSwipedRight={swipeRight}>
+      <Header {...metas} />
       <GlobalStyle />
       <Storage />
       <PresentationMode
